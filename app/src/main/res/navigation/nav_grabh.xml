@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_grabh"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.coursework.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_createTripFragment"
+            app:destination="@id/createTripFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_editTripFragment2"
+            app:destination="@id/editTripFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/createTripFragment"
+        android:name="com.example.coursework.CreateTripFragment"
+        android:label="fragment_create_trip"
+        tools:layout="@layout/fragment_create_trip" >
+        <action
+            android:id="@+id/action_createTripFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editTripFragment2"
+        android:name="com.example.coursework.EditTripFragment"
+        android:label="fragment_edit_trip"
+        tools:layout="@layout/fragment_edit_trip" >
+        <action
+            android:id="@+id/action_editTripFragment2_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_editTripFragment2_to_expensesFragment"
+            app:destination="@id/expensesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/expensesFragment"
+        android:name="com.example.coursework.ExpensesFragment"
+        android:label="fragment_expenses"
+        tools:layout="@layout/fragment_expenses" >
+        <action
+            android:id="@+id/action_expensesFragment_to_createExpensesFragment"
+            app:destination="@id/createExpensesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createExpensesFragment"
+        android:name="com.example.coursework.CreateExpensesFragment"
+        android:label="fragment_create_expenses"
+        tools:layout="@layout/fragment_create_expenses" >
+        <action
+            android:id="@+id/action_createExpensesFragment_to_expensesFragment"
+            app:destination="@id/expensesFragment" />
+    </fragment>
+</navigation>
