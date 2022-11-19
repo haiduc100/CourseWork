@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_expensesFragment_to_createExpensesFragment"
             app:destination="@id/createExpensesFragment" />
+        <action
+            android:id="@+id/action_expensesFragment_to_editExpensesFragment"
+            app:destination="@id/editExpensesFragment" />
     </fragment>
     <fragment
         android:id="@+id/createExpensesFragment"
@@ -54,6 +57,15 @@
         tools:layout="@layout/fragment_create_expenses" >
         <action
             android:id="@+id/action_createExpensesFragment_to_expensesFragment"
+            app:destination="@id/expensesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editExpensesFragment"
+        android:name="com.example.coursework.EditExpensesFragment"
+        android:label="fragment_edit_expenses"
+        tools:layout="@layout/fragment_edit_expenses" >
+        <action
+            android:id="@+id/action_editExpensesFragment_to_expensesFragment"
             app:destination="@id/expensesFragment" />
     </fragment>
 </navigation>

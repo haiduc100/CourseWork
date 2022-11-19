@@ -22,8 +22,11 @@ public interface ExpensesDAO {
   List<ExpensesEntities> getAllExpenses();
 
   @Query("SELECT * FROM EXPENSES WHERE id =:id")
-  List<ExpensesEntities> getExpensesByID(int id);
+  ExpensesEntities getExpensesByID(int id);
 
   @Query("DELETE  FROM EXPENSES WHERE id =:id")
   void deleteExpensesByID(int id);
+
+  @Query("SELECT * FROM EXPENSES WHERE tripId=:id")
+  List<ExpensesEntities> getTripById(int id);
 }

@@ -26,4 +26,7 @@ public interface TripDAO {
 
   @Query("DELETE  FROM TRIPS WHERE TripId =:id")
   void deleteTripByID(int id);
+
+  @Query("DELETE FROM TRIPS ")
+  void deleteTrips();
 }

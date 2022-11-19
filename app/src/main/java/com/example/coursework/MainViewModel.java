@@ -23,6 +23,12 @@ public class MainViewModel extends ViewModel {
     listExpense.setValue(expenses);
     return listExpense;
   }
+  public MutableLiveData<List<ExpensesEntities>> getExpensesOfTrip(int id) {
+    List<ExpensesEntities> expenses = database.expensesDAO().getTripById(id);
+    listExpense.setValue(expenses);
+    return listExpense;
+  }
+
 
   public void setDatabase(Database database) {
     this.database = database;

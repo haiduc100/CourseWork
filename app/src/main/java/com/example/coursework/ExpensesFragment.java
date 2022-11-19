@@ -36,15 +36,15 @@ public class ExpensesFragment extends Fragment {
         database = RoomHelper.initDatabase(getContext());
 
         MainViewModel.setDatabase(database);
-
-        MainViewModel.getAllExpenses().observe(getViewLifecycleOwner(),expensesEntities -> {
+        int tripId = getArguments().getInt("id");
+        MainViewModel.getExpensesOfTrip(tripId).observe(getViewLifecycleOwner(),expensesEntities -> {
             adapter = new ExpensesAdapter(expensesEntities);
 
             adapter.setListener((view, position) -> {
-//                Bundle bundle = new Bundle();// send data
-//                int expenseId = expensesEntities.get(position).getId();
-//                bundle.putInt("id",expenseId);
-//                Navigation.findNavController(getView()).navigate(R.id.action_editTripFragment2_to_expensesFragment);
+                Bundle bundle = new Bundle();// send data
+                int expId = expensesEntities.get(position).getId();
+                bundle.putInt("id",expId);
+                Navigation.findNavController(getView()).navigate(R.id.action_expensesFragment_to_editExpensesFragment,bundle);
             });
             binding.recyclerview.setAdapter(adapter);
             binding.recyclerview.setLayoutManager(
@@ -57,18 +57,20 @@ public class ExpensesFragment extends Fragment {
                     )
             );
         });
-//        RecyclerView rv = binding.recyclerview;
-//        rv.setHasFixedSize(true);
-//        rv.addItemDecoration(
-//                new DividerItemDecoration(
-//                        getContext(),
-//                        (new LinearLayoutManager(getContext()).getOrientation())
-//                )
-//        );
+        RecyclerView rv = binding.recyclerview;
+        rv.setHasFixedSize(true);
+        rv.addItemDecoration(
+                new DividerItemDecoration(
+                        getContext(),
+                        (new LinearLayoutManager(getContext()).getOrientation())
+                )
+        );
         binding.fabAddExpenses.setOnClickListener(view -> {
+            Bundle bundle = new Bundle();
+            bundle.putInt("id", tripId);
             Navigation
                     .findNavController(getView())
-                    .navigate(R.id.action_expensesFragment_to_createExpensesFragment);
+                    .navigate(R.id.action_expensesFragment_to_createExpensesFragment, bundle);
         });
         return binding.getRoot();
     }

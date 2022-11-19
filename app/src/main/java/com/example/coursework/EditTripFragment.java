@@ -73,7 +73,15 @@ public class EditTripFragment extends Fragment {
       }
     );
     binding.btnExpenses.setOnClickListener(view -> {
-      Navigation.findNavController(getView()).navigate(R.id.action_editTripFragment2_to_expensesFragment);
+      Bundle bundle = new Bundle();
+      bundle.putInt("id", id);
+      Navigation.findNavController(getView()).navigate(R.id.action_editTripFragment2_to_expensesFragment,bundle);
+    });
+
+
+    binding.btnDeleteTrip.setOnClickListener(view -> {
+      database.tripDAO().deleteTripByID(id);
+      requireActivity().onBackPressed();
     });
     return binding.getRoot();
   }

@@ -4,8 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -36,6 +40,18 @@ public class MainFragment extends Fragment {
     MainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
     database = RoomHelper.initDatabase(getContext());
     MainViewModel.setDatabase(database);
+      binding.simpleSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+          @Override
+          public boolean onQueryTextSubmit(String s) {
+              return false;
+          }
+
+          @Override
+          public boolean onQueryTextChange(String s) {
+              adapter.getFilter().filter(s);
+              return false;
+          }
+      });
     MainViewModel
       .getAllTrip()
       .observe(
@@ -83,6 +99,12 @@ public class MainFragment extends Fragment {
         .findNavController(getView())
         .navigate(R.id.action_mainFragment_to_createTripFragment);
     });
+    binding.fabDeleteAll.setOnClickListener(view -> {
+        database.tripDAO().deleteTrips();
+        Toast.makeText(getContext(),"Delete all trip successfully",Toast.LENGTH_LONG).show();
+        Navigation.findNavController(getView()).navigate(R.id.mainFragment);
+    });
     return binding.getRoot();
   }
+
 }

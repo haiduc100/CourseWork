@@ -21,7 +21,7 @@ public class ExpensesAdapter extends RecyclerView.Adapter<ExpensesAdapter.Expens
     public ExpensesAdapter.ExpensesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.list_item, parent, false);
+                .inflate(R.layout.expenses_list_item, parent, false);
         return new ExpensesAdapter.ExpensesViewHolder(view);
     }
 
