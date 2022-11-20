@@ -30,7 +30,7 @@ public class ExpensesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        requireActivity().setTitle("List Expenses");
         binding = FragmentExpensesBinding.inflate(inflater,container,false);
         MainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
         database = RoomHelper.initDatabase(getContext());

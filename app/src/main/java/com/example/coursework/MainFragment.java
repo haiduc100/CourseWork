@@ -36,6 +36,7 @@ public class MainFragment extends Fragment {
     @Nullable ViewGroup container,
     @Nullable Bundle savedInstanceState
   ) {
+      requireActivity().setTitle("List Trip");
     binding = FragmentMainBinding.inflate(inflater, container, false);
     MainViewModel = new ViewModelProvider(this).get(MainViewModel.class);
     database = RoomHelper.initDatabase(getContext());
